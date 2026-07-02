@@ -10,7 +10,7 @@
 			label: '회사',
 			type: 'text',
 			required: false,
-			placeholder: '루너리',
+			placeholder: '루나랩',
 			full: false
 		},
 		{

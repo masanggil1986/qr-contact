@@ -28,7 +28,7 @@ describe('buildVCard', () => {
 	it('채워진 필드를 올바른 vCard 속성으로 매핑한다', () => {
 		const result = buildVCard({
 			name: '홍길동',
-			organization: '루너리',
+			organization: '루나랩',
 			title: '대표',
 			mobile: '010-1234-5678',
 			phone: '02-123-4567',
@@ -37,7 +37,7 @@ describe('buildVCard', () => {
 			address: '서울시 강남구'
 		});
 		const lines = result.split('\r\n');
-		expect(lines).toContain('ORG:루너리');
+		expect(lines).toContain('ORG:루나랩');
 		expect(lines).toContain('TITLE:대표');
 		expect(lines).toContain('TEL;TYPE=CELL:010-1234-5678');
 		expect(lines).toContain('TEL;TYPE=WORK,VOICE:02-123-4567');
