@@ -80,6 +80,7 @@
 			<input
 				type={field.type}
 				placeholder={field.placeholder}
+				aria-required={field.required}
 				value={contact[field.key]}
 				oninput={(e) => (contact[field.key] = e.currentTarget.value)}
 				class="h-10 w-full rounded-lg border-slate-200 bg-white px-3.5 text-[15px] text-slate-900 transition-colors duration-150 placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-500 focus:ring-[3px] focus:ring-blue-500/15"
