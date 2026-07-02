@@ -43,20 +43,20 @@
 	</div>
 {/snippet}
 
-{#snippet actions(pngUrl: string, svgString: string)}
+{#snippet actions(pngUrl: string | null, svgString: string | null)}
 	<div class="flex w-full max-w-[320px] gap-3">
 		<button
 			type="button"
-			onclick={() => downloadPng(pngUrl)}
-			disabled={!pngUrl}
+			onclick={() => pngUrl !== null && downloadPng(pngUrl)}
+			disabled={pngUrl === null}
 			class="h-10 flex-1 rounded-lg bg-blue-600 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus-visible:ring-[3px] focus-visible:ring-blue-500/25 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
 		>
 			PNG 다운로드
 		</button>
 		<button
 			type="button"
-			onclick={() => downloadSvg(svgString)}
-			disabled={!svgString}
+			onclick={() => svgString !== null && downloadSvg(svgString)}
+			disabled={svgString === null}
 			class="h-10 flex-1 rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50 focus-visible:ring-[3px] focus-visible:ring-blue-500/25 disabled:cursor-not-allowed disabled:text-slate-300"
 		>
 			SVG 다운로드
@@ -85,14 +85,14 @@
 
 	{#if qrPromise}
 		{#await qrPromise}
-			{@render actions('', '')}
+			{@render actions(null, null)}
 		{:then [pngUrl, svgString]}
 			{@render actions(pngUrl, svgString)}
 		{:catch}
-			{@render actions('', '')}
+			{@render actions(null, null)}
 		{/await}
 	{:else}
-		{@render actions('', '')}
+		{@render actions(null, null)}
 	{/if}
 </div>
 
