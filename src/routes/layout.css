@@ -1,3 +1,14 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@theme {
+	--font-sans: 'SUIT Variable', 'Pretendard', -apple-system, 'Apple SD Gothic Neo', sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+body {
+	background-color: #f8f9fb;
+	background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+	background-size: 24px 24px;
+}
