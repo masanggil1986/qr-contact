@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ContactForm from '$lib/components/ContactForm.svelte';
+	import LunaryPromo from '$lib/components/LunaryPromo.svelte';
 	import QrPreview from '$lib/components/QrPreview.svelte';
 	import { buildVCard } from '$lib/vcard';
 	import { emptyContact, type Contact } from '$lib/types';
@@ -44,6 +45,10 @@
 			<h2 class="mb-5 text-sm font-semibold text-slate-900">QR 코드</h2>
 			<QrPreview data={vcard} {filename} />
 		</section>
+	</div>
+
+	<div class="mt-6">
+		<LunaryPromo />
 	</div>
 
 	<footer class="mt-10 text-center text-[13px] text-slate-400">
