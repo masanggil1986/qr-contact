@@ -7,13 +7,14 @@
 		>
 			MADE BY LUNARY
 		</span>
-		<h2 class="mt-3 text-lg font-bold text-slate-900">이런 서비스가 필요하신가요?</h2>
+		<h2 class="mt-3 text-lg font-bold text-slate-900">웹·앱 개발이 필요하신가요?</h2>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">
 			이 사이트는 대한민국 개발팀 <span class="font-medium text-slate-700">Lunary</span>가
 			만들었습니다. (네, 북한 아닙니다 🙂)
 		</p>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">
-			SvelteKit 웹과 Flutter 앱을 bun 기반으로 빠르게 만듭니다. 영어로도 편하게 소통할 수 있어요.
+			이 명함 QR 생성기는 가벼운 데모일 뿐이에요. 실제로는 훨씬 복잡하고 어려운 웹 서비스와 앱을
+			개발합니다 — SvelteKit 주력, Flutter 앱, bun 기반이고 영어로도 편하게 소통할 수 있어요.
 		</p>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">
 			개발자를 직접 고용하는 것보다 저렴하게 개발하고, 유지보수는 내부 직원분들이 바로 이어받을 수
