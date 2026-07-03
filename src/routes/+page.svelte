@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import LunaryPromo from '$lib/components/LunaryPromo.svelte';
 	import QrPreview from '$lib/components/QrPreview.svelte';
@@ -8,14 +9,50 @@
 	let contact = $state<Contact>({ ...emptyContact });
 	let vcard = $derived(contact.name.trim() ? buildVCard(contact) : '');
 	let filename = $derived(contact.name.trim() || 'contact');
+
+	const title = '명함 QR 코드 생성기 — 연락처 vCard QR 무료 만들기';
+	const description =
+		'이름·전화번호·이메일을 입력하면 스캔 시 주소록에 바로 저장되는 vCard QR 코드를 무료로 만듭니다. 회원가입 없이 브라우저에서만 처리되어 개인정보가 전송되지 않으며, PNG·SVG로 다운로드할 수 있습니다.';
+	const canonical = `${page.url.origin}/`;
+	const ogImage = `${page.url.origin}/og.png`;
+	// script 닫는 태그를 문자열에 그대로 쓰면 Svelte 파서가 블록 종료로 해석하므로 태그를 분리해 조립한다.
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebApplication',
+		name: '명함 QR 코드 생성기',
+		description,
+		url: canonical,
+		applicationCategory: 'UtilityApplication',
+		operatingSystem: 'Web',
+		inLanguage: 'ko',
+		offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+		creator: { '@type': 'Organization', name: 'Lunary', url: 'https://www.lunary.ai.kr' }
+	});
+	const jsonLdScript = `<script type="application/ld+json">${jsonLd}</scr` + `ipt>`;
 </script>
 
 <svelte:head>
-	<title>명함 QR 코드 생성기</title>
-	<meta
-		name="description"
-		content="연락처 정보를 입력하면 주소록에 추가되는 표준 QR 코드를 만들어 다운로드합니다."
-	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href={canonical} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="명함 QR 코드 생성기" />
+	<meta property="og:locale" content="ko_KR" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={ogImage} />
+
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html jsonLdScript}
 </svelte:head>
 
 <main class="mx-auto max-w-5xl px-4 py-12 md:py-16">

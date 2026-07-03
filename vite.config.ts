@@ -5,6 +5,8 @@ import adapter from '@sveltejs/adapter-node';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
+	// 프리뷰 도구가 PORT 환경변수로 포트를 지정할 수 있게 한다 (기본값은 vite 기본 포트).
+	server: { port: Number(process.env.PORT) || undefined },
 	plugins: [
 		tailwindcss(),
 		sveltekit({
@@ -13,7 +15,11 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter()
+			adapter: adapter(),
+			prerender: {
+				// canonical·OG·sitemap이 전부 이 origin을 참조한다. 실제 배포 도메인으로 교체할 것.
+				origin: 'https://qr.lunary.ai.kr'
+			}
 		})
 	],
 	test: {
