@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
 			adapter: adapter(),
 			prerender: {
 				// canonical·OG·sitemap이 전부 이 origin을 참조한다. 실제 배포 도메인으로 교체할 것.
-				origin: 'https://qr.lunary.ai.kr'
+				origin: 'https://qrcard.lunary.ai.kr'
 			}
 		})
 	],
