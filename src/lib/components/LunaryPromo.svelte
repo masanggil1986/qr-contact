@@ -14,7 +14,8 @@
 		</p>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">
 			이 명함 QR 생성기는 가벼운 데모일 뿐이에요. 실제로는 훨씬 복잡하고 어려운 웹 서비스와 앱을
-			개발합니다 — SvelteKit 주력, Flutter 앱, bun 기반이고 영어로도 편하게 소통할 수 있어요.
+			개발합니다 — Flutter와 NodeJS를 주로 사용하고, SvelteKit으로 관리자 페이지까지 함께
+			만들어드립니다. 영어로도 편하게 소통할 수 있어요.
 		</p>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">
 			개발자를 직접 고용하는 것보다 저렴하게 개발하고, 유지보수는 내부 직원분들이 바로 이어받을 수
@@ -22,13 +23,13 @@
 		</p>
 		<div class="mt-4 flex flex-wrap gap-2">
 			<span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">
-				SvelteKit
-			</span>
-			<span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">
 				Flutter
 			</span>
 			<span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">
-				Bun
+				NodeJS
+			</span>
+			<span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">
+				SvelteKit
 			</span>
 			<span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">
 				English OK
