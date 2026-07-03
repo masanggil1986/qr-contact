@@ -5,11 +5,11 @@
 		<span
 			class="inline-block rounded-md bg-blue-50 px-2 py-1 font-mono text-[11px] tracking-widest text-blue-600"
 		>
-			MADE BY LUNARY
+			MADE BY 루나랩
 		</span>
 		<h2 class="mt-3 text-lg font-bold text-slate-900">웹·앱 개발이 필요하신가요?</h2>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">
-			이 사이트는 대한민국 개발팀 <span class="font-medium text-slate-700">Lunary</span>가
+			이 사이트는 대한민국 개발팀 <span class="font-medium text-slate-700">루나랩</span>이
 			만들었습니다. (네, 북한 아닙니다 🙂)
 		</p>
 		<p class="mt-2 text-[15px] leading-relaxed text-slate-500">

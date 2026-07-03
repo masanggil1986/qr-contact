@@ -26,7 +26,7 @@
 		operatingSystem: 'Web',
 		inLanguage: 'ko',
 		offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
-		creator: { '@type': 'Organization', name: 'Lunary', url: 'https://www.lunary.ai.kr' }
+		creator: { '@type': 'Organization', name: '루나랩', url: 'https://www.lunary.ai.kr' }
 	});
 	const jsonLdScript = `<script type="application/ld+json">${jsonLd}</scr` + `ipt>`;
 </script>
