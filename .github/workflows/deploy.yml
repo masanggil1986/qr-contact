@@ -10,7 +10,14 @@ concurrency:
 
 jobs:
   deploy:
+    # 개인 저장소라 LunaryLaps 조직 self-hosted 러너를 쓸 수 없다. 공개 저장소는 호스팅 러너가 무료
     runs-on: ubuntu-latest
+    env:
+      HOST: 49.247.138.222
+      # 서버 22번은 외부 차단, 2222만 열려 있음
+      PORT: 2222
+      # ssh-keyscan(TOFU) 대신 고정. 서버 호스트 키 교체 시 함께 갱신 (SHA256:QOsYoPSVTrQt0Yro0ig3LWifV1GjJcRp8ZEnfoSB8+I)
+      KNOWN_HOST: '[49.247.138.222]:2222 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICmwVtsJoPbGc3jOM942x9Ui0RONHzlT0jDd+uLvbzA6'
     steps:
       - uses: actions/checkout@v5
 
@@ -21,11 +28,14 @@ jobs:
       - run: bun run build
 
       - name: Set up SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H 49.247.138.222 >> ~/.ssh/known_hosts
+          (umask 077; printf '%s\n' "$DEPLOY_SSH_KEY" > "$RUNNER_TEMP/deploy_key")
+          printf '%s\n' "$KNOWN_HOST" > "$RUNNER_TEMP/known_hosts"
 
+      # deploy-qr 키는 서버에서 강제 명령으로 묶여 있다: rrsync(/var/www/qr-contact 쓰기 전용)만 가능. nginx 정적 서빙이라 재시작 불필요
       - name: Deploy
-        run: rsync -az --delete -e "ssh -i ~/.ssh/deploy_key" build/ root@49.247.138.222:/var/www/qr-contact/
+        run: |
+          SSH="ssh -p $PORT -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/known_hosts"
+          rsync -az --delete -e "$SSH" build/ deploy-qr@$HOST:
